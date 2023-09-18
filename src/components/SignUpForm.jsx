@@ -1,44 +1,64 @@
 import React, { useState } from "react";
 
 const SignUpForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [usuario, setUsuario] = useState("");
+  const [contrasena, setContrasena] = useState("");
+  const [confirmarContrasena, setConfirmarContrasena] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleChangeUsuario = (e) => {
+    setUsuario(e.target.value);
+  };
+
+  const handleChangeContrasena = (e) => {
+    setContrasena(e.target.value);
+  };
+
+  const handleChangeConfirmarContrasena = (e) => {
+    setConfirmarContrasena(e.target.value);
+  };
+
+  const handleSignUp = (e) => {
     e.preventDefault();
-    // Aquí puedes realizar la lógica para enviar los datos de registro al servidor
-    // por ejemplo, utilizando fetch o axios.
+
+    // Aquí puedes realizar las acciones de creación de cuenta
+    console.log("Crear cuenta:", usuario, contrasena);
   };
 
   return (
     <div>
-      <h2>Crear cuenta</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
+      <h1>Crear cuenta</h1>
+      <p>Solo se pueden crear cuentas para estudiantes.</p>
+      <form onSubmit={handleSignUp}>
+        <label>
+          Usuario:
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={usuario}
+            onChange={handleChangeUsuario}
+            required
           />
-        </div>
-        <div>
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Confirmar contraseña:</label>
+        </label>
+
+        <label>
+          Contraseña:
           <input
             type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={contrasena}
+            onChange={handleChangeContrasena}
+            required
           />
-        </div>
+        </label>
+
+        <label>
+          Confirmar contraseña:
+          <input
+            type="password"
+            value={confirmarContrasena}
+            onChange={handleChangeConfirmarContrasena}
+            required
+          />
+        </label>
+
         <button type="submit">Crear cuenta</button>
       </form>
     </div>

@@ -1,53 +1,80 @@
 import React, { useState } from "react";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [usuario, setUsuario] = useState("");
+  const [contrasena, setContrasena] = useState("");
+  const [tipoUsuario, setTipoUsuario] = useState("estudiante");
+  const [crearCuenta, setCrearCuenta] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleChangeTipoUsuario = (e) => {
+    setTipoUsuario(e.target.value);
+  };
+
+  const handleChangeUsuario = (e) => {
+    setUsuario(e.target.value);
+  };
+
+  const handleChangeContrasena = (e) => {
+    setContrasena(e.target.value);
+  };
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    // Aquí puedes realizar la lógica para enviar los datos de inicio de sesión al servidor
-    // por ejemplo, utilizando fetch o axios.
+
+    // Aquí puedes realizar las acciones de autenticación y redireccionamiento
+    console.log("Iniciar sesión:", usuario, contrasena, tipoUsuario);
+  };
+
+  const handleCrearCuenta = () => {
+    if (tipoUsuario === "estudiante") {
+      // Aquí puedes mostrar una advertencia de que solo se pueden crear cuentas para estudiantes
+      console.log("Solo se pueden crear cuentas para estudiantes");
+    } else {
+      // Aquí puedes implementar la lógica para crear una cuenta de administrador
+      console.log("Crear cuenta de administrador");
+    }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={handleSubmit}
-      >
-        <h2 className="text-2xl mb-8">Iniciar sesión</h2>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Email:
-          </label>
+    <div>
+      <h1>Iniciar sesión</h1>
+      <form onSubmit={handleLogin}>
+        <label>
+          Tipo de usuario:
+          <select value={tipoUsuario} onChange={handleChangeTipoUsuario}>
+            <option value="estudiante">Estudiante</option>
+            <option value="administrador">Administrador</option>
+          </select>
+        </label>
+
+        <label>
+          Usuario:
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={usuario}
+            onChange={handleChangeUsuario}
+            required
           />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Contraseña:
-          </label>
+        </label>
+
+        <label>
+          Contraseña:
           <input
-            className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={contrasena}
+            onChange={handleChangeContrasena}
+            required
           />
-        </div>
-        <div className="flex items-center justify-between">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-          >
-            Iniciar sesión
-          </button>
-        </div>
+        </label>
+
+        <button type="submit">Iniciar sesión</button>
       </form>
+
+      <div>
+        <h2>Crear cuenta</h2>
+        <p>Solo se pueden crear cuentas para estudiantes.</p>
+        <button onClick={handleCrearCuenta}>Crear cuenta</button>
+      </div>
     </div>
   );
 };

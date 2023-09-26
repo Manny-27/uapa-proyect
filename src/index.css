@@ -2,10 +2,15 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+header{
+  background-color: #111827; /* Fondo oscuro */
+  border-bottom: 4px solid orange; /* Borde inferior naranja de 3 píxeles */
+}
+
 body {
-    background-color: #111827; /* Fondo oscuro */
+    background-color: #f2f3f5; /* Fondo oscuro */
   }
   
   h1 {
-    color: #FFA500; /* Título en color naranja */
+    color: #303030; /* Título en color naranja */
   }

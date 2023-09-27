@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./formulario.css"; // Importa el archivo CSS de estilos
+
 
 const Formulario = () => {
   const [faltaPasantia, setFaltaPasantia] = useState("");
@@ -114,22 +116,18 @@ const Formulario = () => {
   const renderPage = () => {
     if (currentPage === 1) {
       return (
-        <div>
-          <h2>SOLICITUD DE PASANTIA, UAPA</h2>
-          <p>Solo completa el formulario una sola vez, no escribas en mayúsculas sostenidas.</p>
-          <p>TRIMESTRAL: OCTUBRE 2023-ENERO 2024.</p>
+        <div className="page">
+          <h2 className="text-3xl font-bold mb-4">SOLICITUD DE PASANTIA, UAPA</h2>
+          <p className="mb-2">Solo completa el formulario una sola vez, no escribas en mayúsculas sostenidas.</p>
+          <p className="mb-4">TRIMESTRAL: OCTUBRE 2023-ENERO 2024.</p>
           <br />
-          <h3>Trimestral:</h3>
-          <p>
+          <h3 className="text-2xl font-bold mb-2">Trimestral:</h3>
+          <p className="mb-4">
             Debes haber aprobado todas las asignaturas desde el primero hasta el décimo tercero trimestre, excepto los siguientes casos:
-          </p>Continuación del código:
-
-```jsx
+          </p>
           <form onSubmit={handleSubmit}>
-            {/* ...Código del primer bloque de preguntas... */}
-
-            <button type="submit">Enviar formulario</button>
-            <button type="button" onClick={previousPage}>Volver atrás</button>
+            {/* <button type="submit" className="btn">Enviar formulario</button> */}
+            <button type="button" className="btn" onClick={previousPage}>Volver al Inicio</button>
           </form>
         </div>
       );
@@ -268,8 +266,8 @@ const Formulario = () => {
               />
             </label>
 
-            <button type="submit">Enviar formulario</button>
-            <button type="button" onClick={previousPage}>Volver atrás</button>
+            <button type="submit" className="btn">Enviar formulario</button>
+            <button type="button" className="btn" onClick={previousPage}>Volver atrás</button>
           </form>
         </div>
       );
@@ -280,21 +278,21 @@ const Formulario = () => {
     <div>
       <h1>Formulario</h1>
       {renderPage()}
-      {currentPage > 1 && (
-        <button type="button" onClick={previousPage}>
+      {/* {currentPage > 1 && (
+        <button type="button" className="btn" onClick={previousPage}>
           Volver atrás
         </button>
-      )}
+      )} */}
       {currentPage < 2 && (
-        <button type="button" onClick={nextPage}>
+        <button type="button" className="btn" onClick={nextPage}>
           Siguiente
         </button>
       )}
-      {currentPage === 2 && (
-        <button type="button" onClick={handleSubmit}>
+      {/* {currentPage === 2 && (
+        <button type="button" className="btn" onClick={handleSubmit}>
           Enviar formulario
         </button>
-      )}
+      )} */}
     </div>
   );
 };

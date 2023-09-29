@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import logo from '../data/Logo-uapa.png';
 
 const Header_uapa = () => {

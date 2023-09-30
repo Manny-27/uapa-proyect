@@ -25,42 +25,61 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
-      <h1>Crear cuenta</h1>
-      <p>Solo se pueden crear cuentas para estudiantes.</p>
-      <form onSubmit={handleSignUp}>
-        <label>
-          Usuario:
-          <input
-            type="text"
-            value={usuario}
-            onChange={handleChangeUsuario}
-            required
-          />
-        </label>
+    <div className="flex items-center justify-center min-h-90 bg-gray-100">
+      <div className="w-full max-w-sm p-4 bg-white rounded shadow-lg">
+        <h2 className="text-3xl font-semibold mb-6 text-center">Crear cuenta</h2>
+        <p className="text-center mb-4">Solo se pueden crear cuentas para estudiantes.</p>
+        <form onSubmit={handleSignUp}>
+          <div className="mb-4">
+            <label htmlFor="usuario" className="block font-semibold mb-2">
+              Usuario:
+            </label>
+            <input
+              type="text"
+              id="usuario"
+              className="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+              value={usuario}
+              onChange={handleChangeUsuario}
+              required
+            />
+          </div>
 
-        <label>
-          Contraseña:
-          <input
-            type="password"
-            value={contrasena}
-            onChange={handleChangeContrasena}
-            required
-          />
-        </label>
+          <div className="mb-4">
+            <label htmlFor="contrasena" className="block font-semibold mb-2">
+              Contraseña:
+            </label>
+            <input
+              type="password"
+              id="contrasena"
+              className="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+              value={contrasena}
+              onChange={handleChangeContrasena}
+              required
+            />
+          </div>
 
-        <label>
-          Confirmar contraseña:
-          <input
-            type="password"
-            value={confirmarContrasena}
-            onChange={handleChangeConfirmarContrasena}
-            required
-          />
-        </label>
+          <div className="mb-4">
+            <label htmlFor="confirmarContrasena" className="block font-semibold mb-2">
+              Confirmar contraseña:
+            </label>
+            <input
+              type="password"
+              id="confirmarContrasena"
+              className="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+              value={confirmarContrasena}
+              onChange={handleChangeConfirmarContrasena}
+              required
+            />
+          </div>
 
-        <button type="submit">Crear cuenta</button>
-      </form>
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+          >
+            Crear cuenta
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

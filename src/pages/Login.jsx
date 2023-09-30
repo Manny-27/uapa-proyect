@@ -1,6 +1,8 @@
 import React from "react";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
+import Header_uapa from "../components/Header_uapa"
+import Footer from "../components/Footer"
 
 const Login = () => {
   const [isLogin, setIsLogin] = React.useState(true);
@@ -10,7 +12,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div>
+      <Header_uapa/>
+    <div className="flex justify-center items-center h-70 bg-gray-100">
+      
       <div className="max-w-md w-full">
         <h1 className="text-4xl text-center text-orange mb-8">Bienvenido</h1>
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8">
@@ -43,6 +48,8 @@ const Login = () => {
           )}
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };

@@ -125,9 +125,10 @@ const Formulario = () => {
           <p className="mb-4">
             Debes haber aprobado todas las asignaturas desde el primero hasta el décimo tercero trimestre, excepto los siguientes casos:
           </p>
+          <br />
           <form onSubmit={handleSubmit}>
             {/* <button type="submit" className="btn">Enviar formulario</button> */}
-            <button type="button" className="btn" onClick={previousPage}>Volver al Inicio</button>
+            <button type="button" className="btnv" onClick={previousPage}>Volver al Inicio</button>
           </form>
         </div>
       );
@@ -135,7 +136,9 @@ const Formulario = () => {
       return (
         <div>
           <h3>PLAZA PROPUESTA PARA REALIZAR LA PASANTIA</h3>
+          <br />
           <p>Coloca una propuesta de empresa o institución que cuente con un Departamento o área relacionada a tu carrera donde puedas realizar tu pasantía.</p>
+          <br />
           <form onSubmit={handleSubmit}>
             <label>
               Nombre de la empresa/institución:
@@ -155,7 +158,8 @@ const Formulario = () => {
                 onChange={(e) => setRnc(e.target.value)}
               />
             </label>
-
+              <br />
+              <br />
             <label>
               Dirección de la empresa/institución:
               <input
@@ -175,6 +179,8 @@ const Formulario = () => {
                 required
               />
             </label>
+             <br />
+             <br />
 
             <label>
               Municipio donde se encuentra la empresa/institución:
@@ -195,6 +201,8 @@ const Formulario = () => {
                 required
               />
             </label>
+            <br />
+            <br />
 
             <label>
               Teléfono de la empresa/institución:
@@ -215,7 +223,9 @@ const Formulario = () => {
                 required
               />
             </label>
-
+            
+              <br />
+              <br />
             <label>
               Número de flota o celular:
               <input
@@ -235,6 +245,8 @@ const Formulario = () => {
                 required
               />
             </label>
+            <br />
+            <br />
 
             <label>
               Nombre completo de la persona a contactar en la empresa o institución:
@@ -255,7 +267,8 @@ const Formulario = () => {
                 required
               />
             </label>
-
+              <br />
+              <br />
             <label>
               Correo electrónico de la empresa o institución:
               <input
@@ -266,8 +279,8 @@ const Formulario = () => {
               />
             </label>
 
-            <button type="submit" className="btn">Enviar formulario</button>
-            <button type="button" className="btn" onClick={previousPage}>Volver atrás</button>
+            <button type="submit" className="btnm">Enviar formulario</button>
+            <button type="button" className="btnn" onClick={previousPage}>Volver atrás</button>
           </form>
         </div>
       );

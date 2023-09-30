@@ -1,14 +1,23 @@
-
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import logo from '../../data/Logo-uapa.png';
-import avatar from '../../data/avatar.jpg'
+import Navbar from './Navbar';
+import avatar from '../../data/avatar.jpg';
+import logo from "../../data/Logo-uapa.png";
 
-const Header = () => {
+const HeaderAdmin = () => {
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsNavbarOpen(!isNavbarOpen);
+  };
+
   return (
-    <header className="flex items-center justify-between  py-4 px-6 shadow">
+    <header className="flex items-center justify-between py-4 px-6 shadow">
       <div className="flex items-center">
-        <button className="text-gray-600 focus:outline-none mr-4">
+        <button
+          className="text-gray-600 focus:outline-none mr-4"
+          onClick={toggleNavbar}
+        >
           <svg
             className="h-6 w-6 fill-current"
             xmlns="http://www.w3.org/2000/svg"
@@ -24,17 +33,18 @@ const Header = () => {
           </svg>
         </button>
         <Link to="/">
-        <img
-          // className="h-8 w-auto"
-          src={logo}
-          alt="Logo de la empresa"  width="150" height="125" style={{ paddingLeft: '10px' }}
-        />
+          <img
+            className="h-8 w-auto"
+            // eslint-disable-next-line no-undef
+            src={logo}
+            alt="Logo de la empresa"
+          />
         </Link>
       </div>
 
-      <div className="flex items-center">
+      <div className="flex items-center ml-auto">
         <div className="mr-4">
-        <p className="font-semibold text-white">Nombre del Administrador</p>
+          <p className="font-semibold text-white">Nombre del Administrador</p>
         </div>
         <div className="h-10 w-10 rounded-full overflow-hidden">
           <img
@@ -44,8 +54,10 @@ const Header = () => {
           />
         </div>
       </div>
+
+      {<Navbar />}
     </header>
   );
 };
 
-export default Header;
+export default HeaderAdmin;

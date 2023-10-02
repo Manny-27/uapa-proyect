@@ -1,37 +1,80 @@
 import React, { useState } from "react";
 import "./formulario.css"; // Importa el archivo CSS de estilos
-
+import axios from 'axios';
 
 const Formulario = () => {
-  const [faltaPasantia, setFaltaPasantia] = useState("");
-  const [realizoServicioSocial, setRealizoServicioSocial] = useState("");
-  const [recinto, setRecinto] = useState("");
-  const [matriculaID, setMatriculaID] = useState("");
-  const [nombreCompleto, setNombreCompleto] = useState("");
-  const [sexo, setSexo] = useState("");
-  const [periodoAcademico, setPeriodoAcademico] = useState("");
-  const [materiasOptativas, setMateriasOptativas] = useState("");
-  const [carrera, setCarrera] = useState("");
-  const [direccion, setDireccion] = useState("");
-  const [sector, setSector] = useState("");
-  const [municipio, setMunicipio] = useState("");
-  const [provincia, setProvincia] = useState("");
-  const [celular, setCelular] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [cedula, setCedula] = useState("");
-  const [nombreEmpresa, setNombreEmpresa] = useState("");
-  const [rnc, setRnc] = useState("");
-  const [direccionEmpresa, setDireccionEmpresa] = useState("");
-  const [sectorEmpresa, setSectorEmpresa] = useState("");
-  const [municipioEmpresa, setMunicipioEmpresa] = useState("");
-  const [provinciaEmpresa, setProvinciaEmpresa] = useState("");
-  const [telefonoEmpresa, setTelefonoEmpresa] = useState("");
-  const [extension, setExtension] = useState("");
-  const [celularEmpresa, setCelularEmpresa] = useState("");
-  const [naturalezaEmpresa, setNaturalezaEmpresa] = useState("");
-  const [contactoEmpresa, setContactoEmpresa] = useState("");
-  const [departamentoPasantia, setDepartamentoPasantia] = useState("");
-  const [emailEmpresa, setEmailEmpresa] = useState("");
+
+  const [Form, setFormData] = useState({
+    FaltaPasantia:'',
+    RealizoServicioSocial:'',
+    Recinto:'',
+    MatriculaID:'',
+    NombreCompleto:'',
+    Sexo:'',
+    PeriodoAcademico:'',
+    MateriasOptativas:'',
+    Carrera:'',
+    Direccion:'',
+    Sector:'',
+    Municipio:'',
+    Provincia:'',
+    Celular:'',
+    Telefono:'',
+    Cedula:'',
+    NombreEmpresa:'',
+    Rnc:'',
+    DireccionEmpresa:'',
+    SectorEmpresa:'',
+    MunicipioEmpresa:'',
+    ProvinciaEmpresa:'',
+    TelefonoEmpresa:'',
+    Extension:'',
+    CelularEmpresa:'',
+    NaturalezaEmpresa:'',
+    ContactoEmpresa:'',
+    DepartamentoPasantia:'',
+    EmailEmpresa:''
+  });
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({
+      ...Form,
+      [id]: value,
+    });
+  }
+
+  
+
+  // const [faltaPasantia, setFaltaPasantia] = useState("");
+  // const [realizoServicioSocial, setRealizoServicioSocial] = useState("");
+  // const [recinto, setRecinto] = useState("");
+  // const [matriculaID, setMatriculaID] = useState("");
+  // const [nombreCompleto, setNombreCompleto] = useState("");
+  // const [sexo, setSexo] = useState("");
+  // const [periodoAcademico, setPeriodoAcademico] = useState("");
+  // const [materiasOptativas, setMateriasOptativas] = useState("");
+  // const [carrera, setCarrera] = useState("");
+  // const [direccion, setDireccion] = useState("");
+  // const [sector, setSector] = useState("");
+  // const [municipio, setMunicipio] = useState("");
+  // const [provincia, setProvincia] = useState("");
+  // const [celular, setCelular] = useState("");
+  // const [telefono, setTelefono] = useState("");
+  // const [cedula, setCedula] = useState("");
+  // const [nombreEmpresa, setNombreEmpresa] = useState("");
+  // const [rnc, setRnc] = useState("");
+  // const [direccionEmpresa, setDireccionEmpresa] = useState("");
+  // const [sectorEmpresa, setSectorEmpresa] = useState("");
+  // const [municipioEmpresa, setMunicipioEmpresa] = useState("");
+  // const [provinciaEmpresa, setProvinciaEmpresa] = useState("");
+  // const [telefonoEmpresa, setTelefonoEmpresa] = useState("");
+  // const [extension, setExtension] = useState("");
+  // const [celularEmpresa, setCelularEmpresa] = useState("");
+  // const [naturalezaEmpresa, setNaturalezaEmpresa] = useState("");
+  // const [contactoEmpresa, setContactoEmpresa] = useState("");
+  // const [departamentoPasantia, setDepartamentoPasantia] = useState("");
+  // const [emailEmpresa, setEmailEmpresa] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -45,73 +88,87 @@ const Formulario = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(Form);
+    axios.post('http://localhost:3001/registroPasantia',Form, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error('Error al enviar el formulario:', error);
+      });
+    };
 
     // Aquí puedes realizar las acciones necesarias con los datos del formulario
 
-    // Por ejemplo, puedes imprimir los datos en la consola
-    console.log({
-      faltaPasantia,
-      realizoServicioSocial,
-      recinto,
-      matriculaID,
-      nombreCompleto,
-      sexo,
-      periodoAcademico,
-      materiasOptativas,
-      carrera,
-      direccion,
-      sector,
-      municipio,
-      provincia,
-      celular,
-      telefono,
-      cedula,
-      nombreEmpresa,
-      rnc,
-      direccionEmpresa,
-      sectorEmpresa,
-      municipioEmpresa,
-      provinciaEmpresa,
-      telefonoEmpresa,
-      extension,
-      celularEmpresa,
-      naturalezaEmpresa,
-      contactoEmpresa,
-      departamentoPasantia,
-      emailEmpresa
-    });
+    // // Por ejemplo, puedes imprimir los datos en la consola
+    // console.log({
+    //   faltaPasantia,
+    //   realizoServicioSocial,
+    //   recinto,
+    //   matriculaID,
+    //   nombreCompleto,
+    //   sexo,
+    //   periodoAcademico,
+    //   materiasOptativas,
+    //   carrera,
+    //   direccion,
+    //   sector,
+    //   municipio,
+    //   provincia,
+    //   celular,
+    //   telefono,
+    //   cedula,
+    //   nombreEmpresa,
+    //   rnc,
+    //   direccionEmpresa,
+    //   sectorEmpresa,
+    //   municipioEmpresa,
+    //   provinciaEmpresa,
+    //   telefonoEmpresa,
+    //   extension,
+    //   celularEmpresa,
+    //   naturalezaEmpresa,
+    //   contactoEmpresa,
+    //   departamentoPasantia,
+    //   emailEmpresa
+    // });
 
-    // También puedes reiniciar los campos del formulario
-    setFaltaPasantia("");
-    setRealizoServicioSocial("");
-    setRecinto("");
-    setMatriculaID("");
-    setNombreCompleto("");
-    setSexo("");
-    setPeriodoAcademico("");
-    setMateriasOptativas("");
-    setCarrera("");
-    setDireccion("");
-    setSector("");
-    setMunicipio("");
-    setProvincia("");
-    setCelular("");
-    setTelefono("");
-    setCedula("");
-    setNombreEmpresa("");
-    setRnc("");
-    setDireccionEmpresa("");
-    setSectorEmpresa("");
-    setMunicipioEmpresa("");
-    setProvinciaEmpresa("");
-    setTelefonoEmpresa("");
-    setExtension("");
-    setCelularEmpresa("");
-    setNaturalezaEmpresa("");
-    setContactoEmpresa("");
-    setDepartamentoPasantia("");
-    setEmailEmpresa("");
-  };
+  //   // También puedes reiniciar los campos del formulario
+  //   setFaltaPasantia("");
+  //   setRealizoServicioSocial("");
+  //   setRecinto("");
+  //   setMatriculaID("");
+  //   setNombreCompleto("");
+  //   setSexo("");
+  //   setPeriodoAcademico("");
+  //   setMateriasOptativas("");
+  //   setCarrera("");
+  //   setDireccion("");
+  //   setSector("");
+  //   setMunicipio("");
+  //   setProvincia("");
+  //   setCelular("");
+  //   setTelefono("");
+  //   setCedula("");
+  //   setNombreEmpresa("");
+  //   setRnc("");
+  //   setDireccionEmpresa("");
+  //   setSectorEmpresa("");
+  //   setMunicipioEmpresa("");
+  //   setProvinciaEmpresa("");
+  //   setTelefonoEmpresa("");
+  //   setExtension("");
+  //   setCelularEmpresa("");
+  //   setNaturalezaEmpresa("");
+  //   setContactoEmpresa("");
+  //   setDepartamentoPasantia("");
+  //   setEmailEmpresa("");
+  // };
 
   const renderPage = () => {
     if (currentPage === 1) {
@@ -144,8 +201,9 @@ const Formulario = () => {
               Nombre de la empresa/institución:
               <input
                 type="text"
-                value={nombreEmpresa}
-                onChange={(e) => setNombreEmpresa(e.target.value)}
+                //value={NombreEmpresa}
+                id='NombreEmpresa'
+                onChange={(e) => handleInputChange(e, 'NombreEmpresa')}
                 required
               />
             </label>
@@ -154,8 +212,9 @@ const Formulario = () => {
               Registro Nacional de Contribuyentes (RNC):
               <input
                 type="text"
-                value={rnc}
-                onChange={(e) => setRnc(e.target.value)}
+                //value={rnc}
+                id='Rnc'
+                onChange={(e) => handleInputChange(e, 'Rnc')}
               />
             </label>
               <br />
@@ -164,8 +223,9 @@ const Formulario = () => {
               Dirección de la empresa/institución:
               <input
                 type="text"
-                value={direccionEmpresa}
-                onChange={(e) => setDireccionEmpresa(e.target.value)}
+                //value={direccionEmpresa}
+                id='DireccionEmpresa'
+                onChange={(e) => handleInputChange(e, 'DireccionEmpresa')}
                 required
               />
             </label>
@@ -174,8 +234,9 @@ const Formulario = () => {
               Sector donde se encuentra la empresa/institución:
               <input
                 type="text"
-                value={sectorEmpresa}
-                onChange={(e) => setSectorEmpresa(e.target.value)}
+                //value={sectorEmpresa}
+                id='SectorEmpresa'
+                onChange={(e) => handleInputChange(e, 'SectorEmpresa')}
                 required
               />
             </label>
@@ -186,8 +247,9 @@ const Formulario = () => {
               Municipio donde se encuentra la empresa/institución:
               <input
                 type="text"
-                value={municipioEmpresa}
-                onChange={(e) => setMunicipioEmpresa(e.target.value)}
+                //value={municipioEmpresa}
+                id='MunicipioEmpresa'
+                onChange={(e) => handleInputChange(e, 'MunicipioEmpresa')}
                 required
               />
             </label>
@@ -196,8 +258,9 @@ const Formulario = () => {
               Provincia donde se encuentra la empresa/institución:
               <input
                 type="text"
-                value={provinciaEmpresa}
-                onChange={(e) => setProvinciaEmpresa(e.target.value)}
+                //value={provinciaEmpresa}
+                id='ProvinciaEmpresa'
+                onChange={(e) => handleInputChange(e, 'ProvinciaEmpresa')}
                 required
               />
             </label>
@@ -208,8 +271,9 @@ const Formulario = () => {
               Teléfono de la empresa/institución:
               <input
                 type="text"
-                value={telefonoEmpresa}
-                onChange={(e) => setTelefonoEmpresa(e.target.value)}
+                //value={telefonoEmpresa}
+                id='TelefonoEmpresa'
+                onChange={(e) => handleInputChange(e, 'TelefonoEmpresa')}
                 required
               />
             </label>
@@ -218,9 +282,9 @@ const Formulario = () => {
               Extensión telefónica:
               <input
                 type="text"
-                value={extension}
-                onChange={(e) => setExtension(e.target.value)}
-                required
+                //value={extension}
+                id='Extension'
+                onChange={(e) => handleInputChange(e, 'Extension')}
               />
             </label>
             
@@ -230,8 +294,9 @@ const Formulario = () => {
               Número de flota o celular:
               <input
                 type="text"
-                value={celularEmpresa}
-                onChange={(e) => setCelularEmpresa(e.target.value)}
+                //value={celularEmpresa}
+                id='CelularEmpresa'
+                onChange={(e) => handleInputChange(e, 'CelularEmpresa')}
                 required
               />
             </label>
@@ -240,8 +305,9 @@ const Formulario = () => {
               Naturaleza de la Empresa:
               <input
                 type="text"
-                value={naturalezaEmpresa}
-                onChange={(e) => setNaturalezaEmpresa(e.target.value)}
+                //value={naturalezaEmpresa}
+                id='NaturalezaEmpresa'
+                onChange={(e) => handleInputChange(e, 'NaturalezaEmpresa')}
                 required
               />
             </label>
@@ -252,8 +318,9 @@ const Formulario = () => {
               Nombre completo de la persona a contactar en la empresa o institución:
               <input
                 type="text"
-                value={contactoEmpresa}
-                onChange={(e) => setContactoEmpresa(e.target.value)}
+                //value={contactoEmpresa}
+                id='ContactoEmpresa'
+                onChange={(e) => handleInputChange(e, 'ContactoEmpresa')}
                 required
               />
             </label>
@@ -262,8 +329,9 @@ const Formulario = () => {
               Departamento en el que realizará la Pasantía:
               <input
                 type="text"
-                value={departamentoPasantia}
-                onChange={(e) => setDepartamentoPasantia(e.target.value)}
+                //value={departamentoPasantia}
+                id='DepartamentoPasantia'
+                onChange={(e) => handleInputChange(e, 'DepartamentoPasantia')}
                 required
               />
             </label>
@@ -273,8 +341,9 @@ const Formulario = () => {
               Correo electrónico de la empresa o institución:
               <input
                 type="email"
-                value={emailEmpresa}
-                onChange={(e) => setEmailEmpresa(e.target.value)}
+                //value={emailEmpresa}
+                id='EmailEmpresa'
+                onChange={(e) => handleInputChange(e, 'EmailEmpresa')}
                 required
               />
             </label>

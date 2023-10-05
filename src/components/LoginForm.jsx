@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
 const LoginForm = () => {
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
   const [tipoUsuario, setTipoUsuario] = useState("estudiante");
-  const [crearCuenta, setCrearCuenta] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleChangeTipoUsuario = (e) => {
     setTipoUsuario(e.target.value);
@@ -21,22 +22,22 @@ const LoginForm = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Aquí puedes realizar las acciones de autenticación y redireccionamiento
+    // Aquí puedes realizar las acciones de autenticación
     console.log("Iniciar sesión:", usuario, contrasena, tipoUsuario);
+
+    setLoggedIn(true);
   };
 
-  const handleCrearCuenta = () => {
+  if (loggedIn) {
     if (tipoUsuario === "estudiante") {
-      // Aquí puedes mostrar una advertencia de que solo se pueden crear cuentas para estudiantes
-      console.log("Solo se pueden crear cuentas para estudiantes");
-    } else {
-      // Aquí puedes implementar la lógica para crear una cuenta de administrador
-      console.log("Crear cuenta de administrador");
+      return <Redirect to="/estudiante/formulario" />;
+    } else if (tipoUsuario === "administrador") {
+      return <Redirect to="/dashboard" />;
     }
-  };
+  }
 
   return (
-    <div className=" flex items-center justify-center min-h-90 bg-gray-100">
+    <div className="flex items-center justify-center min-h-90 bg-gray-100">
       <div className="w-full max-w-sm p-4 bg-white rounded shadow-lg">
         <h2 className="text-2xl font-semibold mb-4">Iniciar sesión</h2>
         <form onSubmit={handleLogin}>
@@ -90,26 +91,6 @@ const LoginForm = () => {
             Iniciar sesión
           </button>
         </form>
-
-        <div className="mt-4">
-          {/* <h2 className="text-lg font-semibold mb-2">Crear cuenta</h2>
-          <p className="mb-2">Solo se pueden crear cuentas para estudiantes.</p>
-          <button
-            onClick={handleCrearCuenta}
-            className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
-          >
-            Crear cuenta
-          </button> */}
-          {/* <p className="text-center mt-4">
-                ¿No tienes una cuenta?{" "}
-                <button
-                  className="text-blue-500 hover:text-blue-700"
-                  // onClick={toggleForm}
-                >
-                  Crear cuenta
-                </button>
-              </p> */}
-        </div>
       </div>
     </div>
   );

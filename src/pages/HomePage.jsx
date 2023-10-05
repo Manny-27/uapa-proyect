@@ -12,7 +12,7 @@ const BodyContent = () => {
       <p style={{ paddingLeft:'20px', paddingTop:'20px', paddingInlineEnd:'10px' ,fontSize: '1rem' }}>Servicios</p>
       <ul style={{ paddingLeft:'20px', paddingTop:'10px', fontSize: '1rem' }}>
         <li style={{ listStyleType: 'disc' }}><Link to="/">Inicio</Link></li>
-        <li style={{ listStyleType: 'disc' }}><Link to="/estudiante/formulario">Solicitar pasantía</Link></li>
+        <li style={{ listStyleType: 'disc' }}><Link to="/Login">Solicitar pasantía</Link></li>
         <li style={{ listStyleType: 'disc' }}><Link to="/contacto">Contacto</Link></li>
       </ul>
     </div>

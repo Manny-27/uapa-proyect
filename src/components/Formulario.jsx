@@ -179,8 +179,8 @@ const Formulario = () => {
                 required
               />
             </label>
-             <br />
-             <br />
+            <br />
+            <br />
 
             <label>
               Municipio donde se encuentra la empresa/institución:
